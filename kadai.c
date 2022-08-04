@@ -9,7 +9,7 @@ typedef int data_t;       /* スタックに貯えるデータの型 */
 data_t stack_data[STACK_SIZE];  /* スタック本体 */
 int stack_num;
 
-int push(data_t push_data)
+int push(data_t push_data)//push関数
 {
     if (stack_num < STACK_SIZE) {
         stack_data[stack_num] = push_data;
@@ -20,7 +20,7 @@ int push(data_t push_data)
     }
 }
 
-int pop(data_t *pop_data)
+int pop(data_t *pop_data)//pop関数
 {
     if(stack_num > 0){
         int o;
@@ -34,7 +34,8 @@ int pop(data_t *pop_data)
     }
 }
 
-void stackPrint(){
+void stackPrint()//stackしているデータを表示する関数
+{
     int i;
 
     printf("stack[");
@@ -44,7 +45,8 @@ void stackPrint(){
     printf("]\n");
 }
 
-int peek(data_t *peek_data){
+int peek(data_t *peek_data)//peek関数
+{
     if(stack_num > 0){
         printf("peek %d\n", stack_data[stack_num - 1]);
         *peek_data = stack_data[stack_num];
@@ -54,7 +56,8 @@ int peek(data_t *peek_data){
     }
 }
 
-int size(data_t *size_data){
+int size(data_t *size_data) //size関数
+{
     int stack_data_size = sizeof stack_data / sizeof stack_data[0];
     
     printf("overall memoly size:%d\n", sizeof stack_data);
@@ -69,7 +72,7 @@ int main()
     stack_num = 0;
     for(;;)
     {
-        printf("0 = push 1 = pop -1 = end\n");
+        printf("push = 0, pop = 1, peek = 2, size = 3\n");
         scanf("%d",&b);
         if(b == 0)/*push*/
         {
@@ -95,17 +98,17 @@ int main()
             stackPrint();
         }
 
-        if(b == 2)
+        if(b == 2)//peek
         {
             peek(&p);
         }
 
-        if(b == 3)
+        if(b == 3)//size
         {
             size(&p);
         }
 
-        if(b == -1)
+        if(b == -1)//end
         {
             return 0;
         }
